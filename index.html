@@ -6,15 +6,25 @@
   <title>Carnets - Congreso HeLa 2026</title>
   <style>
     * { box-sizing: border-box; }
+    html {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       width: 100%;
-      max-width: 960px;
       min-height: 100vh;
-      margin: 0 auto;
+      margin: 0;
       padding: 0 1rem 2rem;
       color: #1a1a1a;
       background: #f5f6f8;
+    }
+    .form-wrapper {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0;
     }
     .page { display: none; }
     .page.active { display: block; }
@@ -314,6 +324,7 @@
   </style>
 </head>
 <body>
+  <div class="form-wrapper">
   <!-- Header (visible en todas las páginas) -->
   <header class="hela-header" aria-hidden="true">
     <div class="logo">
@@ -480,6 +491,8 @@
       </div>
     </div>
   </section>
+
+  </div><!-- .form-wrapper -->
 
   <script>
     (function () {
