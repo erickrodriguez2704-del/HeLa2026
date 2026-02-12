@@ -6,11 +6,7 @@
   <title>Carnets - Congreso HeLa 2026</title>
   <style>
     * { box-sizing: border-box; }
-    html {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    html { width: 100%; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       width: 100%;
@@ -23,16 +19,10 @@
       flex-direction: column;
       align-items: center;
     }
-    .form-wrapper {
-      width: 100%;
-      max-width: 960px;
-      flex-shrink: 0;
-      padding: 0;
-    }
+    .form-wrapper { width: 100%; max-width: 960px; flex-shrink: 0; padding: 0; }
     .page { display: none; }
     .page.active { display: block; }
 
-    /* Header HeLa */
     .hela-header {
       background: linear-gradient(135deg, #a8d4e8 0%, #c5e3f0 100%);
       padding: 1.5rem 1rem;
@@ -40,29 +30,16 @@
       border-radius: 0 0 12px 12px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .hela-header .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .hela-header .gear {
-      width: 48px;
-      height: 48px;
-      background: rgba(255,255,255,0.6);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
+      text-align: center;
     }
-    .hela-header .brand { font-size: 1.5rem; font-weight: 700; color: #1a4d6d; }
-    .hela-header .year { font-size: 1.75rem; font-weight: 800; color: #1a4d6d; }
+    .hela-header .page-title {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a4d6d;
+    }
 
-    /* Landing */
     .intro {
       background: #fff;
       padding: 2rem;
@@ -70,7 +47,6 @@
       box-shadow: 0 2px 12px rgba(0,0,0,.08);
       margin-bottom: 1.5rem;
     }
-    .intro h1 { margin: 0 0 1rem; font-size: 1.5rem; color: #1a4d6d; }
     .intro p { margin: 0 0 0.75rem; line-height: 1.6; color: #444; }
     .intro .note {
       background: #f0f9e8;
@@ -95,8 +71,8 @@
       text-decoration: none;
     }
     .btn:hover { background: #153a52; }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; }
 
-    /* Form */
     .form-card {
       background: #fff;
       padding: 2rem;
@@ -118,9 +94,7 @@
       margin: 1.5rem 0 0.75rem;
     }
     .section-title:first-child { margin-top: 0; }
-    .field {
-      margin-bottom: 1.25rem;
-    }
+    .field { margin-bottom: 1.25rem; }
     .field label {
       display: block;
       font-weight: 600;
@@ -159,12 +133,17 @@
     .validacion-mensaje.correcta { color: #2e7d32; font-weight: 600; }
     .validacion-mensaje.incorrecta { color: #c62828; font-weight: 600; }
 
-    /* Payment type buttons */
-    .payment-options {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+    .precio-box {
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: #e8f5e9;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1b5e20;
     }
+
+    .payment-options { display: flex; gap: 1rem; flex-wrap: wrap; }
     .payment-btn {
       flex: 1;
       min-width: 180px;
@@ -182,8 +161,7 @@
       transition: all 0.2s;
     }
     .payment-btn .letter {
-      width: 32px;
-      height: 32px;
+      width: 32px; height: 32px;
       border-radius: 6px;
       background: #bbb;
       color: #fff;
@@ -200,7 +178,6 @@
     .payment-btn.active .letter { background: rgba(255,255,255,0.3); }
     .payment-btn:hover:not(.active) { border-color: #999; }
 
-    /* Conditional payment content */
     .payment-content { display: none; margin-top: 1.25rem; }
     .payment-content.active { display: block; }
     .upload-zone {
@@ -269,11 +246,7 @@
     }
     .aviso strong { color: #e65100; }
 
-    /* Thank you page */
-    .thanks-page .form-card {
-      text-align: center;
-      padding: 2.5rem;
-    }
+    .thanks-page .form-card { text-align: center; padding: 2.5rem; }
     .thanks-page h2 {
       font-size: 1.5rem;
       color: #333;
@@ -295,7 +268,6 @@
       color: #555;
     }
 
-    /* Responsive: usar mejor el ancho de la página */
     @media (min-width: 768px) {
       body { padding: 0 2rem 2rem; }
       .hela-header { margin: 0 -2rem 2rem; padding: 1.5rem 2rem; }
@@ -303,15 +275,13 @@
     @media (min-width: 1024px) {
       body { max-width: 1000px; padding: 0 2.5rem 2rem; }
       .hela-header { margin: 0 -2.5rem 2rem; padding: 1.75rem 2.5rem; }
+      .hela-header .page-title { font-size: 1.65rem; }
       .intro, .form-card { padding: 2.5rem; }
-      .intro h1 { font-size: 1.65rem; }
     }
     @media (max-width: 767px) {
       body { padding: 0 0.75rem 1.25rem; }
       .hela-header { margin: 0 -0.75rem 1.5rem; padding: 1rem 0.75rem; }
-      .hela-header .brand { font-size: 1.25rem; }
-      .hela-header .year { font-size: 1.5rem; }
-      .hela-header .gear { width: 40px; height: 40px; font-size: 1rem; }
+      .hela-header .page-title { font-size: 1.35rem; }
       .intro, .form-card { padding: 1.25rem; }
       .intro h1 { font-size: 1.35rem; }
       .payment-btn { min-width: 100%; }
@@ -320,191 +290,177 @@
     @media (max-width: 480px) {
       body { padding: 0 0.5rem 1rem; }
       .hela-header { margin: 0 -0.5rem 1rem; padding: 0.75rem 0.5rem; }
+      .hela-header .page-title { font-size: 1.2rem; }
       .intro, .form-card { padding: 1rem; }
-      .intro h1 { font-size: 1.2rem; }
       .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
   <div class="form-wrapper">
-  <!-- Header (visible en todas las páginas) -->
-  <header class="hela-header" aria-hidden="true">
-    <div class="logo">
-      <span class="gear" aria-hidden="true">⚙</span>
-      <span class="brand">HeLa</span>
-    </div>
-    <span class="year">2026</span>
-  </header>
+    <header class="hela-header">
+      <h1 class="page-title">Carnets - Congreso HeLa 2026</h1>
+    </header>
 
-  <!-- Página 1: Landing -->
-  <section id="page-intro" class="page active">
-    <div class="intro">
-      <h1>Carnets - Congreso HeLa 2026</h1>
-      <p>Bienvenido al proceso de registro para el <strong>10º Congreso de Ingeniería Biomédica HeLa 2026</strong>, que se llevará a cabo del <strong>22 al 24 de abril</strong> en el Teatro del Pueblo, Hermosillo, Sonora.</p>
-      <p>Al adquirir tu carnet, tendrás acceso a todas las conferencias durante la semana del congreso, además de un taller y visita industrial de tu preferencia.</p>
-      <p class="note">★ La venta de carnets se realiza en tres fases, con precios diferenciados según la fecha de compra.</p>
-    </div>
-    <button type="button" class="btn" id="btn-continuar">Continuar registro →</button>
-  </section>
+    <section id="page-intro" class="page active">
+      <div class="intro">
+        <p>Bienvenido al proceso de registro para el <strong>10º Congreso de Ingeniería Biomédica HeLa 2026</strong>, que se llevará a cabo del <strong>22 al 24 de abril</strong> en el Teatro del Pueblo, Hermosillo, Sonora.</p>
+        <p>Al adquirir tu carnet, tendrás acceso a todas las conferencias durante la semana del congreso, además de un taller y visita industrial de tu preferencia.</p>
+        <p class="note">En este formulario se vende únicamente el carnet <strong>Regular</strong>. Otros tipos de carnet (especial, visitante, etc.) se registran directamente por el comité.</p>
+      </div>
+      <button type="button" class="btn" id="btn-continuar">Continuar registro &rarr;</button>
+    </section>
 
-  <!-- Página 2: Formulario -->
-  <section id="page-form" class="page">
-    <div class="form-card">
-      <a href="#" class="back-link" id="link-atras">← Atrás</a>
+    <section id="page-form" class="page">
+      <div class="form-card">
+        <a href="#" class="back-link" id="link-atras">&larr; Atrás</a>
 
-      <form id="form-registro" novalidate>
-        <h2 class="section-title">Sección 1 - Tipo de compra y fase de registro</h2>
-        <div class="field" id="wrap-tipo-compra">
-          <label for="tipo-compra">Tipo de compra <span class="req">*</span></label>
-          <select id="tipo-compra" name="tipo_compra" required>
-            <option value="">Selecciona una opción</option>
-            <option value="fase1">Regular (Persona local)</option>
-            <option value="fase2">Visitante (Persona de fuera)</option>
-            <option value="fase3">Especial (Sorteo/Dinámica)</option>
-          </select>
-          <span class="error-msg" id="err-tipo-compra"></span>
-        </div>
-
-        <h2 class="section-title">Sección 2 - Datos personales</h2>
-        <p style="font-size: 0.9rem; color: #555; margin-bottom: 1rem;">
-          Esta información será utilizada para tu acreditación, para asignarte el taller y visita industrial que elijas, realizar las asistencias del evento y entregarte una camiseta como parte de tu kit. Revisa antes de enviar tu formulario que tus datos estén bien escritos (nombre, correo y teléfono) para evitar problemas con tu certificado y actividades del congreso.
-        </p>
-
-        <div class="field" id="wrap-nombre">
-          <label for="nombre">Nombre Completo <span class="req">*</span></label>
-          <div class="hint"><span class="info-icon">ℹ</span> Primero ingresa tus nombres y luego tus apellidos, utilizando mayúscula inicial en cada nombre.</div>
-          <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carlos Alberto López Gómez" autocomplete="name">
-          <span class="error-msg" id="err-nombre"></span>
-        </div>
-
-        <div class="field" id="wrap-email">
-          <label for="email">Correo electrónico <span class="req">*</span></label>
-          <div class="hint"><span class="info-icon">ℹ</span> Ingresa un correo electrónico al que tengas acceso y que cuente con espacio disponible para recibir mensajes. Por este medio se te hará llegar tu código QR de asistencia.</div>
-          <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com" autocomplete="email">
-          <span class="error-msg" id="err-email"></span>
-        </div>
-
-        <div class="field" id="wrap-telefono">
-          <label for="telefono">Teléfono <span class="req">*</span></label>
-          <input type="tel" id="telefono" name="telefono" required placeholder="662 113 6679" autocomplete="tel" inputmode="numeric" pattern="[0-9\s]*" maxlength="15">
-          <span class="error-msg" id="err-telefono"></span>
-        </div>
-
-        <div class="field" id="wrap-escuela">
-          <label for="escuela">Escuela <span class="req">*</span></label>
-          <input type="text" id="escuela" name="escuela" required placeholder="Ej. ITH" autocomplete="organization">
-          <span class="error-msg" id="err-escuela"></span>
-        </div>
-
-        <div class="field" id="wrap-talla">
-          <label for="talla">Talla de camiseta <span class="req">*</span></label>
-          <select id="talla" name="talla" required>
-            <option value="">Selecciona talla</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
-          <span class="error-msg" id="err-talla"></span>
-        </div>
-
-        <h2 class="section-title">Sección 3 - Forma de pago</h2>
-        <div class="field" id="wrap-tipo-pago">
-          <label>Tipo de pago <span class="req">*</span></label>
-          <div class="payment-options">
-            <button type="button" class="payment-btn" id="btn-pago-fisico" data-value="fisico">
-              <span class="letter">A</span> Pago físico
-            </button>
-            <button type="button" class="payment-btn" id="btn-transferencia" data-value="transferencia">
-              <span class="letter">B</span> Transferencia bancaria
-            </button>
+        <form id="form-registro" novalidate>
+          <h2 class="section-title">Sección 1 - Información del carnet</h2>
+          <p style="font-size: 0.95rem; color: #333; margin-bottom: 1rem;">
+            Este formulario corresponde al carnet <strong>Regular</strong> del Congreso HeLa 2026.
+          </p>
+          <div class="precio-box">
+            Precio del carnet Regular: <span id="precio-valor">$500</span>
           </div>
-          <input type="hidden" id="tipo-pago" name="tipo_pago" value="">
-          <span class="error-msg" id="err-tipo-pago"></span>
-        </div>
 
-        <!-- Contenido Pago físico -->
-        <div id="content-pago-fisico" class="payment-content">
-          <div class="field" id="wrap-password">
-            <label for="password-vendedor">Contraseña del vendedor</label>
-            <input type="password" id="password-vendedor" name="password_vendedor" placeholder="Contraseña" autocomplete="off">
-            <span class="error-msg" id="err-password"></span>
-          </div>
-          <div class="field" id="wrap-validacion">
-            <label>Validación contraseña</label>
-            <div id="validacion-mensaje" class="validacion-mensaje" aria-live="polite"></div>
-          </div>
-        </div>
+          <h2 class="section-title">Sección 2 - Datos personales</h2>
+          <p style="font-size: 0.9rem; color: #555; margin-bottom: 1rem;">
+            Esta información será utilizada para tu acreditación, para asignarte el taller y visita industrial que elijas, realizar las asistencias del evento y entregarte una camiseta como parte de tu kit. Revisa antes de enviar que tus datos estén bien escritos (nombre, correo y teléfono).
+          </p>
 
-        <!-- Contenido Transferencia bancaria -->
-        <div id="content-transferencia" class="payment-content">
-          <div class="field" id="wrap-comprobante">
-            <label>Comprobante de transferencia <span class="req">*</span></label>
-            <div class="upload-zone" id="upload-zone" role="button" tabindex="0">
-              <div class="upload-zone-default">
-                <div class="icon">↑</div>
-                <div>Selecciona para obtener el archivo o arrástralo hasta aquí</div>
-                <div class="size">Tamaño permitido: 10 MB</div>
-              </div>
-              <div class="comprobante-preview" id="comprobante-preview">
-                <img id="comprobante-preview-img" alt="Vista previa del comprobante" style="display: none;">
-                <div class="comprobante-preview-pdf" id="comprobante-preview-pdf" style="display: none;">
-                  <span class="pdf-icon" aria-hidden="true">📄</span>
-                  <span class="comprobante-preview-name" id="comprobante-preview-pdf-name"></span>
-                </div>
-                <div class="comprobante-preview-name" id="comprobante-preview-filename"></div>
-                <button type="button" class="comprobante-preview-quitar" id="comprobante-quitar">Quitar archivo</button>
-              </div>
+          <div class="field" id="wrap-nombre">
+            <label for="nombre">Nombre Completo <span class="req">*</span></label>
+            <div class="hint"><span class="info-icon">&#8505;</span> Primero nombres y luego apellidos, con mayúscula inicial.</div>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carlos Alberto López Gómez" autocomplete="name">
+            <span class="error-msg" id="err-nombre"></span>
+          </div>
+
+          <div class="field" id="wrap-email">
+            <label for="email">Correo electrónico <span class="req">*</span></label>
+            <div class="hint"><span class="info-icon">&#8505;</span> Correo con espacio para recibir tu código QR de asistencia.</div>
+            <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com" autocomplete="email">
+            <span class="error-msg" id="err-email"></span>
+          </div>
+
+          <div class="field" id="wrap-telefono">
+            <label for="telefono">Teléfono <span class="req">*</span></label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="662 113 6679" autocomplete="tel" inputmode="numeric" pattern="[0-9\s]*" maxlength="15">
+            <span class="error-msg" id="err-telefono"></span>
+          </div>
+
+          <div class="field" id="wrap-escuela">
+            <label for="escuela">Escuela <span class="req">*</span></label>
+            <input type="text" id="escuela" name="escuela" required placeholder="Ej. ITH" autocomplete="organization">
+            <span class="error-msg" id="err-escuela"></span>
+          </div>
+
+          <div class="field" id="wrap-talla">
+            <label for="talla">Talla de camiseta <span class="req">*</span></label>
+            <select id="talla" name="talla" required>
+              <option value="">Selecciona talla</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+            <span class="error-msg" id="err-talla"></span>
+          </div>
+
+          <h2 class="section-title">Sección 3 - Forma de pago</h2>
+          <div class="field" id="wrap-tipo-pago">
+            <label>Tipo de pago <span class="req">*</span></label>
+            <div class="payment-options">
+              <button type="button" class="payment-btn" id="btn-pago-fisico" data-value="fisico">
+                <span class="letter">A</span> Pago físico
+              </button>
+              <button type="button" class="payment-btn" id="btn-transferencia" data-value="transferencia">
+                <span class="letter">B</span> Transferencia bancaria
+              </button>
             </div>
-            <input type="file" id="comprobante" name="comprobante" accept="image/*,.pdf" hidden>
-            <span class="error-msg" id="err-comprobante"></span>
+            <input type="hidden" id="tipo-pago" name="tipo_pago" value="">
+            <span class="error-msg" id="err-tipo-pago"></span>
           </div>
+
+          <div id="content-pago-fisico" class="payment-content">
+            <div class="field" id="wrap-password">
+              <label for="password-vendedor">Contraseña del vendedor</label>
+              <input type="password" id="password-vendedor" name="password_vendedor" placeholder="Contraseña" autocomplete="off">
+              <span class="error-msg" id="err-password"></span>
+            </div>
+            <div class="field" id="wrap-validacion">
+              <label>Validación contraseña</label>
+              <div id="validacion-mensaje" class="validacion-mensaje" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div id="content-transferencia" class="payment-content">
+            <div class="field" id="wrap-comprobante">
+              <label>Comprobante de transferencia <span class="req">*</span></label>
+              <div class="upload-zone" id="upload-zone" role="button" tabindex="0">
+                <div class="upload-zone-default">
+                  <div class="icon">&#8593;</div>
+                  <div>Selecciona o arrastra el archivo aquí</div>
+                  <div class="size">Máximo 10 MB</div>
+                </div>
+                <div class="comprobante-preview" id="comprobante-preview">
+                  <img id="comprobante-preview-img" alt="Vista previa" style="display: none;">
+                  <div class="comprobante-preview-pdf" id="comprobante-preview-pdf" style="display: none;">
+                    <span class="pdf-icon" aria-hidden="true">&#128196;</span>
+                    <span class="comprobante-preview-name" id="comprobante-preview-pdf-name"></span>
+                  </div>
+                  <div class="comprobante-preview-name" id="comprobante-preview-filename"></div>
+                  <button type="button" class="comprobante-preview-quitar" id="comprobante-quitar">Quitar archivo</button>
+                </div>
+              </div>
+              <input type="file" id="comprobante" name="comprobante" accept="image/*,.pdf" hidden>
+              <span class="error-msg" id="err-comprobante"></span>
+            </div>
+            <div class="aviso">
+              Aviso: Se verificará el comprobante. Si la fecha o el monto no concuerdan, se anulará la emisión del carnet y no hay devoluciones.
+            </div>
+          </div>
+
           <div class="aviso">
-            !! Aviso importante !!<br>
-            Al enviar tu formulario, se verificará la imagen del <strong>comprobante de transferencia</strong>. En caso de que la fecha del comprobante no concuerde con la fecha de envío del formulario ni con el precio correspondiente a la fase de venta, <strong>se anulará la emisión de tu carnet</strong> y no se realizarán <strong>devoluciones monetarias</strong>.
+            <strong>Importante:</strong> si los datos capturados o el comprobante de pago no son claros, no corresponden al monto correcto o a las fechas de venta, tu carnet <strong>no será registrado</strong>.
+            La forma oficial de confirmar tu registro es revisando tu correo electrónico: ahí recibirás tu <strong>ticket con código QR</strong> o, en su caso, un <strong>correo de rechazo</strong> para contactar al comité.
           </div>
-        </div>
 
-        <div style="margin-top: 2rem;">
-          <button type="submit" class="btn" id="btn-enviar">Finalizar registro →</button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Página 3: Gracias -->
-  <section id="page-thanks" class="page">
-    <div class="form-card thanks-page">
-      <h2>¡Gracias por tu inscripción al Congreso HeLa 2026!</h2>
-      <div class="body-text">
-        <p>Te agradecemos tu interés en participar en la décima edición del <strong>Congreso HeLa 2026</strong>.</p>
-        <p>Mantente al pendiente de tu correo electrónico, ya que por ese medio se te hará llegar tu código QR de asistencia.</p>
-        <p>Te recomendamos seguir nuestras redes sociales para estar al tanto de sorpresas y novedades.</p>
-        <p>Para cualquier duda o información adicional, contáctanos:</p>
-        <ul style="list-style: none; padding: 0;">
-          <li>Correo: <a href="mailto:congresohela@gmail.com">congresohela@gmail.com</a></li>
-          <li>Instagram: <a href="https://instagram.com/congreso.hela" target="_blank" rel="noopener">@congreso.hela</a></li>
-        </ul>
+          <div style="margin-top: 2rem;">
+            <button type="submit" class="btn" id="btn-enviar">Finalizar registro &rarr;</button>
+          </div>
+        </form>
       </div>
-      <div class="signature">
-        Atentamente,<br>
-        <strong>Comité Organizador - Congreso HeLa 2026</strong><br>
-        Instituto Tecnológico de Hermosillo
-      </div>
-    </div>
-  </section>
+    </section>
 
-  </div><!-- .form-wrapper -->
+    <section id="page-thanks" class="page">
+      <div class="form-card thanks-page">
+        <h2>¡Gracias por tu inscripción al Congreso HeLa 2026!</h2>
+        <div class="body-text">
+          <p>Te agradecemos tu interés en participar en la décima edición del <strong>Congreso HeLa 2026</strong>.</p>
+          <p>Mantente al pendiente de tu correo electrónico; por ese medio se te hará llegar tu código QR de asistencia.</p>
+          <p>Para cualquier duda: <a href="mailto:congresohela@gmail.com">congresohela@gmail.com</a> | <a href="https://instagram.com/congreso.hela" target="_blank" rel="noopener">@congreso.hela</a></p>
+        </div>
+        <div class="signature">
+          Atentamente,<br>
+          <strong>Comité Organizador - Congreso HeLa 2026</strong><br>
+          Instituto Tecnológico de Hermosillo
+        </div>
+      </div>
+    </section>
+  </div>
 
   <script>
     (function () {
-      // Pega aquí la URL de tu Web App de Google Apps Script (Deploy → New deployment → Web app)
-      // Ejemplo: 'https://script.google.com/macros/s/AKfycbz.../exec'
-      var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwqhyNae8AOzSVIAYzhRLlOX-p0-m9kBDMlx7ne7tGSBQwkxnRFdL1M1b7yTpUUONxOWA/exec';
+      // ═══════════════════════════════════════════════════════════════════
+      // URL de la Web App: Desplegar → Gestionar implementaciones → copia la URL (termina en /exec)
+      // Solo se configura AQUÍ en index.html. Code.gs y panel.html no llevan esta URL.
+      // ═══════════════════════════════════════════════════════════════════
+      var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwH2R4Ky909T54eqxeC8mAzSrEZN1kmD2xTEo8GLuMQ3wUlRHkISq5-OgpmN4aHFF8h/exec';
 
       var MAX_FILE_MB = 10;
       var MAX_FILE_MB_ENVIO = 5;
+
       var pageIntro = document.getElementById('page-intro');
       var pageForm = document.getElementById('page-form');
       var pageThanks = document.getElementById('page-thanks');
@@ -526,30 +482,20 @@
         page.classList.add('active');
       }
 
-      btnContinuar.addEventListener('click', function () {
-        showPage(pageForm);
-      });
-
-      linkAtras.addEventListener('click', function (e) {
-        e.preventDefault();
-        showPage(pageIntro);
-      });
+      btnContinuar.addEventListener('click', function () { showPage(pageForm); });
+      linkAtras.addEventListener('click', function (e) { e.preventDefault(); showPage(pageIntro); });
 
       document.getElementById('telefono').addEventListener('input', function () {
         this.value = this.value.replace(/\D/g, '');
       });
 
       var PASSWORD_CORRECTA = 'CONGRESO2026';
-
       function updateValidacionMensaje() {
         var el = document.getElementById('validacion-mensaje');
         if (!el) return;
         var pass = document.getElementById('password-vendedor').value;
         el.className = 'validacion-mensaje';
-        if (!pass) {
-          el.textContent = '';
-          return;
-        }
+        if (!pass) { el.textContent = ''; return; }
         if (pass === PASSWORD_CORRECTA) {
           el.textContent = 'Contraseña correcta';
           el.classList.add('correcta');
@@ -558,7 +504,6 @@
           el.classList.add('incorrecta');
         }
       }
-
       document.getElementById('password-vendedor').addEventListener('input', updateValidacionMensaje);
       document.getElementById('password-vendedor').addEventListener('blur', updateValidacionMensaje);
 
@@ -566,29 +511,26 @@
         tipoPagoInput.value = value;
         document.getElementById('err-tipo-pago').textContent = '';
         document.getElementById('wrap-tipo-pago').classList.remove('error');
-
         btnPagoFisico.classList.toggle('active', value === 'fisico');
         btnTransferencia.classList.toggle('active', value === 'transferencia');
         contentPagoFisico.classList.toggle('active', value === 'fisico');
         contentTransferencia.classList.toggle('active', value === 'transferencia');
-
         if (value === 'fisico') {
-          document.getElementById('comprobante').removeAttribute('required');
+          comprobanteInput.removeAttribute('required');
           document.getElementById('password-vendedor').setAttribute('required', '');
           updateValidacionMensaje();
-        } else if (value === 'transferencia') {
+        } else {
           document.getElementById('password-vendedor').removeAttribute('required');
-          document.getElementById('comprobante').setAttribute('required', '');
-          document.getElementById('validacion-mensaje').textContent = '';
-          document.getElementById('validacion-mensaje').className = 'validacion-mensaje';
+          comprobanteInput.setAttribute('required', '');
+          var vm = document.getElementById('validacion-mensaje');
+          vm.textContent = '';
+          vm.className = 'validacion-mensaje';
         }
       }
-
       btnPagoFisico.addEventListener('click', function () { setPaymentType('fisico'); });
       btnTransferencia.addEventListener('click', function () { setPaymentType('transferencia'); });
 
       var comprobantePreviewUrl = null;
-
       function updateComprobantePreview() {
         var preview = document.getElementById('comprobante-preview');
         var previewImg = document.getElementById('comprobante-preview-img');
@@ -596,12 +538,10 @@
         var previewPdfName = document.getElementById('comprobante-preview-pdf-name');
         var previewFilename = document.getElementById('comprobante-preview-filename');
         var defaultBlock = uploadZone.querySelector('.upload-zone-default');
-
         if (comprobantePreviewUrl) {
           URL.revokeObjectURL(comprobantePreviewUrl);
           comprobantePreviewUrl = null;
         }
-
         var file = comprobanteInput.files && comprobanteInput.files[0];
         if (!file) {
           preview.classList.remove('visible');
@@ -612,12 +552,10 @@
           uploadZone.classList.remove('has-file');
           return;
         }
-
         uploadZone.classList.add('has-file');
         if (defaultBlock) defaultBlock.style.display = 'none';
         preview.classList.add('visible');
         previewFilename.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
-
         if (file.type.indexOf('image/') === 0) {
           comprobantePreviewUrl = URL.createObjectURL(file);
           previewImg.src = comprobantePreviewUrl;
@@ -636,7 +574,6 @@
         comprobanteInput.value = '';
         updateComprobantePreview();
       });
-
       uploadZone.addEventListener('click', function (e) {
         if (!e.target.closest('.comprobante-preview-quitar')) comprobanteInput.click();
       });
@@ -654,13 +591,8 @@
         }
         updateComprobantePreview();
       });
-      uploadZone.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        uploadZone.style.borderColor = '#1a4d6d';
-      });
-      uploadZone.addEventListener('dragleave', function () {
-        uploadZone.style.borderColor = '';
-      });
+      uploadZone.addEventListener('dragover', function (e) { e.preventDefault(); uploadZone.style.borderColor = '#1a4d6d'; });
+      uploadZone.addEventListener('dragleave', function () { uploadZone.style.borderColor = ''; });
       uploadZone.addEventListener('drop', function (e) {
         e.preventDefault();
         uploadZone.style.borderColor = '';
@@ -675,7 +607,6 @@
       });
 
       var requiredFields = [
-        { id: 'tipo-compra', wrap: 'wrap-tipo-compra', err: 'err-tipo-compra' },
         { id: 'nombre', wrap: 'wrap-nombre', err: 'err-nombre' },
         { id: 'email', wrap: 'wrap-email', err: 'err-email' },
         { id: 'telefono', wrap: 'wrap-telefono', err: 'err-telefono' },
@@ -692,15 +623,11 @@
         document.getElementById('err-tipo-pago').textContent = '';
         document.getElementById('wrap-password').classList.remove('error');
         document.getElementById('err-password').textContent = '';
-        document.getElementById('wrap-validacion').classList.remove('error');
-        var validacionMsg = document.getElementById('validacion-mensaje');
-        if (validacionMsg) {
-          validacionMsg.textContent = '';
-          validacionMsg.className = 'validacion-mensaje';
-        }
+        var vm = document.getElementById('validacion-mensaje');
+        if (vm) { vm.textContent = ''; vm.className = 'validacion-mensaje'; }
         document.getElementById('wrap-comprobante').classList.remove('error');
-        var errComp = document.getElementById('err-comprobante');
-        if (errComp) errComp.textContent = '';
+        var ec = document.getElementById('err-comprobante');
+        if (ec) ec.textContent = '';
       }
 
       function setError(wrapId, errId, msg) {
@@ -712,22 +639,18 @@
         clearErrors();
         var tipoPago = tipoPagoInput.value.trim();
         var valid = true;
-
         if (!tipoPago) {
           setError('wrap-tipo-pago', 'err-tipo-pago', 'Selecciona el tipo de pago.');
           valid = false;
         }
-
         requiredFields.forEach(function (f) {
           var el = document.getElementById(f.id);
-          var val = el.value.trim();
-          if (!val) {
+          if (!el.value.trim()) {
             document.getElementById(f.wrap).classList.add('error');
             document.getElementById(f.err).textContent = 'Este campo es obligatorio.';
             valid = false;
           }
         });
-
         if (tipoPago === 'fisico') {
           var pass = document.getElementById('password-vendedor').value;
           if (!pass) {
@@ -739,30 +662,28 @@
           }
         } else if (tipoPago === 'transferencia') {
           if (!comprobanteInput.files || !comprobanteInput.files.length) {
-            setError('wrap-comprobante', 'err-comprobante', 'Debes subir el comprobante de transferencia.');
+            setError('wrap-comprobante', 'err-comprobante', 'Debes subir el comprobante.');
             valid = false;
           }
         }
-
         return valid;
       }
 
       function buildPayload(callback) {
         var payload = {
           fecha: new Date().toISOString(),
-          tipo_compra: document.getElementById('tipo-compra').value,
+          tipo_compra: 'regular',
           nombre: document.getElementById('nombre').value.trim(),
           email: document.getElementById('email').value.trim(),
           telefono: document.getElementById('telefono').value.trim(),
           escuela: document.getElementById('escuela').value.trim(),
           talla: document.getElementById('talla').value,
-          tipo_pago: document.getElementById('tipo-pago').value,
+          tipo_pago: tipoPagoInput.value,
           password_vendedor: document.getElementById('password-vendedor').value || '',
           comprobante_nombre: '',
           comprobante_base64: '',
           comprobante_tipo: ''
         };
-
         var file = comprobanteInput.files && comprobanteInput.files[0];
         if (file) {
           payload.comprobante_nombre = file.name;
@@ -783,6 +704,24 @@
         }
       }
 
+      function enviarConFetch(payload, btnEnviar, textoOriginal) {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function () {
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = textoOriginal;
+          showPage(pageThanks);
+        }).catch(function (err) {
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = textoOriginal;
+          alert('No se pudo enviar. Revisa tu conexión o intenta de nuevo.');
+          console.error(err);
+        });
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!validate()) {
@@ -790,41 +729,45 @@
           if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
-
         var btnEnviar = document.getElementById('btn-enviar');
         var textoOriginal = btnEnviar.textContent;
         btnEnviar.disabled = true;
         btnEnviar.textContent = 'Enviando…';
 
         buildPayload(function (payload) {
-          if (!GOOGLE_SCRIPT_URL) {
-            btnEnviar.disabled = false;
-            btnEnviar.textContent = textoOriginal;
-            showPage(pageThanks);
-            return;
-          }
+          var useGoogleScript = typeof google !== 'undefined' && google.script && google.script.run;
 
-          fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          }).then(function () {
+          if (useGoogleScript) {
+            google.script.run
+              .withSuccessHandler(function (res) {
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = textoOriginal;
+                if (res && res.success) {
+                  showPage(pageThanks);
+                } else {
+                  alert(res && res.message ? res.message : 'Error al registrar.');
+                }
+              })
+              .withFailureHandler(function (err) {
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = textoOriginal;
+                alert('Error: ' + (err && err.message ? err.message : String(err)));
+              })
+              .procesarCompraDesdeFormulario(payload);
+          } else if (GOOGLE_SCRIPT_URL) {
+            enviarConFetch(payload, btnEnviar, textoOriginal);
+          } else {
             btnEnviar.disabled = false;
             btnEnviar.textContent = textoOriginal;
-            showPage(pageThanks);
-          }).catch(function (err) {
-            btnEnviar.disabled = false;
-            btnEnviar.textContent = textoOriginal;
-            alert('No se pudo guardar el registro. Revisa la consola o intenta de nuevo.');
-            console.error(err);
-          });
+            alert('Configura la URL de la Web App (GOOGLE_SCRIPT_URL) en el código.');
+          }
         });
       });
     })();
   </script>
 </body>
 </html>
+
 
 
 
