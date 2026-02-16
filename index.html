@@ -671,10 +671,10 @@
         return valid;
       }
 
+      // Payload sin tipo_compra: el backend usa PRECIO_CARNET (800) y no espera tipo_compra
       function buildPayload(callback) {
         var payload = {
           fecha: new Date().toISOString(),
-          tipo_compra: 'regular',
           nombre: document.getElementById('nombre').value.trim(),
           email: document.getElementById('email').value.trim(),
           telefono: document.getElementById('telefono').value.trim(),
@@ -769,6 +769,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
