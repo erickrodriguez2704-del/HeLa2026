@@ -19,28 +19,106 @@
       flex-direction: column;
       align-items: center;
     }
-    .form-wrapper { width: 100%; max-width: 960px; flex-shrink: 0; padding: 0; }
-    .page { display: none; }
-    .page.active { display: block; }
-
-    /* Solo el título enmarcado en azul (sin logo ni año) */
-    .hela-header {
-      background: linear-gradient(135deg, #a8d4e8 0%, #c5e3f0 100%);
-      padding: 1rem 1.5rem;
-      margin: 0 -1rem 2rem;
-      border-radius: 0 0 12px 12px;
+    /* Barra de navegación superior (ancho completo) */
+    .main-nav {
+      width: 100%;
+      background: #3d3d3d;
+      color: #fff;
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .main-nav a { color: #fff; text-decoration: none; }
+    .main-nav a:hover { color: #c5e3f0; }
+    .main-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .main-nav-logo .gear-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      font-size: 1.25rem;
     }
-    .hela-header .page-title {
+    .main-nav-logo .logo-text-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .main-nav-logo-text { font-weight: 700; font-size: 1.1rem; }
+    .main-nav-logo-sub { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.02em; opacity: 0.9; }
+    .main-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      list-style: none;
       margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1a4d6d;
-      padding: 0.25rem 0;
+      padding: 0;
+      font-size: 0.9rem;
     }
+    .main-nav-menu li { position: relative; }
+    .main-nav-menu .dropdown::after { content: ' ▾'; font-size: 0.7em; opacity: 0.8; }
+    .main-nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+    }
+    .main-nav-icons a { opacity: 0.9; }
+    .main-nav-icons a:hover { opacity: 1; }
+
+    .breadcrumb {
+      width: 100%;
+      max-width: 960px;
+      margin: 0.5rem auto 0;
+      padding: 0 1rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a4d6d; }
+
+    .form-wrapper { width: 100%; max-width: 960px; flex-shrink: 0; padding: 0; margin: 0 auto; }
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* Cabecera azul: engrane + HeLa a la izquierda, 2026 a la derecha */
+    .hela-header {
+      background: linear-gradient(135deg, #a8d4e8 0%, #c5e3f0 100%);
+      padding: 1rem 1.5rem;
+      margin: 0 0 1.5rem;
+      border-radius: 0 0 12px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .hela-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hela-header .gear {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .hela-header .brand { font-size: 1.5rem; font-weight: 700; color: #1a4d6d; }
+    .hela-header .year { font-size: 1.75rem; font-weight: 800; color: #1a4d6d; }
 
     .intro {
       background: #fff;
@@ -49,6 +127,7 @@
       box-shadow: 0 2px 12px rgba(0,0,0,.08);
       margin-bottom: 1.5rem;
     }
+    .intro h1 { margin: 0 0 1rem; font-size: 1.5rem; color: #1a4d6d; }
     .intro p { margin: 0 0 0.75rem; line-height: 1.6; color: #444; }
     .intro .note {
       background: #f0f9e8;
@@ -58,6 +137,7 @@
       font-size: 0.9rem;
       color: #333;
     }
+    .intro .note .star { color: #7cb342; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -272,18 +352,24 @@
 
     @media (min-width: 768px) {
       body { padding: 0 2rem 2rem; }
-      .hela-header { margin: 0 -2rem 2rem; padding: 1.5rem 2rem; }
+      .main-nav { padding: 0.75rem 2rem; }
+      .hela-header { padding: 1.5rem 2rem; }
     }
     @media (min-width: 1024px) {
-      body { max-width: 1000px; padding: 0 2.5rem 2rem; }
-      .hela-header { margin: 0 -2.5rem 2rem; padding: 1.75rem 2.5rem; }
-      .hela-header .page-title { font-size: 1.65rem; }
+      body { max-width: 100%; padding: 0 2.5rem 2rem; }
+      .hela-header { padding: 1.75rem 2.5rem; }
+      .hela-header .brand { font-size: 1.65rem; }
+      .hela-header .year { font-size: 1.9rem; }
       .intro, .form-card { padding: 2.5rem; }
+      .intro h1 { font-size: 1.65rem; }
     }
     @media (max-width: 767px) {
       body { padding: 0 0.75rem 1.25rem; }
-      .hela-header { margin: 0 -0.75rem 1.5rem; padding: 1rem 0.75rem; }
-      .hela-header .page-title { font-size: 1.35rem; }
+      .main-nav-menu { display: none; }
+      .hela-header { padding: 1rem 1rem; margin-bottom: 1rem; }
+      .hela-header .brand { font-size: 1.35rem; }
+      .hela-header .year { font-size: 1.5rem; }
+      .hela-header .gear { width: 40px; height: 40px; font-size: 1rem; }
       .intro, .form-card { padding: 1.25rem; }
       .intro h1 { font-size: 1.35rem; }
       .payment-btn { min-width: 100%; }
@@ -291,24 +377,56 @@
     }
     @media (max-width: 480px) {
       body { padding: 0 0.5rem 1rem; }
-      .hela-header { margin: 0 -0.5rem 1rem; padding: 0.75rem 0.5rem; }
-      .hela-header .page-title { font-size: 1.2rem; }
+      .hela-header { padding: 0.75rem 0.75rem; }
+      .hela-header .brand { font-size: 1.2rem; }
+      .hela-header .year { font-size: 1.35rem; }
       .intro, .form-card { padding: 1rem; }
       .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
+  <nav class="main-nav" aria-label="Navegación principal">
+    <a href="#" class="main-nav-logo">
+      <span class="gear-icon" aria-hidden="true">&#9881;</span>
+      <span class="logo-text-wrap">
+        <span class="main-nav-logo-text">HeLa</span>
+        <span class="main-nav-logo-sub">Congreso de Ingeniería Biomédica</span>
+      </span>
+    </a>
+    <ul class="main-nav-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#" class="dropdown">Programa 2026</a></li>
+      <li><a href="#">Equipo</a></li>
+      <li><a href="#">Merch</a></li>
+      <li><a href="#">Ayuda</a></li>
+    </ul>
+    <div class="main-nav-icons">
+      <a href="#" aria-label="Buscar">&#128269;</a>
+      <a href="#" aria-label="Perfil">&#128100;</a>
+      <a href="#" aria-label="Carrito">&#128722;</a>
+    </div>
+  </nav>
+
+  <p class="breadcrumb">
+    <a href="#">INICIO</a> / <span>SIN TÍTULO</span>
+  </p>
+
   <div class="form-wrapper">
-    <header class="hela-header">
-      <h1 class="page-title"></h1>
+    <header class="hela-header" aria-hidden="true">
+      <div class="logo">
+        <span class="gear" aria-hidden="true">&#9881;</span>
+        <span class="brand">HeLa</span>
+      </div>
+      <span class="year">2026</span>
     </header>
 
     <section id="page-intro" class="page active">
       <div class="intro">
+        <h1>Carnets - Congreso HeLa 2026</h1>
         <p>Bienvenido al proceso de registro para el <strong>10º Congreso de Ingeniería Biomédica HeLa 2026</strong>, que se llevará a cabo del <strong>22 al 24 de abril</strong> en el Teatro del Pueblo, Hermosillo, Sonora.</p>
         <p>Al adquirir tu carnet, tendrás acceso a todas las conferencias durante la semana del congreso, además de un taller y visita industrial de tu preferencia.</p>
-        <p class="note">En este formulario se vende únicamente el carnet <strong>Regular</strong>. Otros tipos de carnet (especial, visitante, etc.) se registran directamente por el comité.</p>
+        <p class="note"><span class="star">★</span> La venta de carnets se realiza en tres fases, con precios diferenciados según la fecha de compra.</p>
       </div>
       <button type="button" class="btn" id="btn-continuar">Continuar registro &rarr;</button>
     </section>
@@ -769,13 +887,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
