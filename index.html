@@ -19,73 +19,6 @@
       flex-direction: column;
       align-items: center;
     }
-    /* Barra de navegación superior (ancho completo) */
-    .main-nav {
-      width: 100%;
-      background: #3d3d3d;
-      color: #fff;
-      padding: 0.6rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-    .main-nav a { color: #fff; text-decoration: none; }
-    .main-nav a:hover { color: #c5e3f0; }
-    .main-nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .main-nav-logo .gear-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-    }
-    .main-nav-logo .logo-text-wrap {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-    .main-nav-logo-text { font-weight: 700; font-size: 1.1rem; }
-    .main-nav-logo-sub { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.02em; opacity: 0.9; }
-    .main-nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 0.9rem;
-    }
-    .main-nav-menu li { position: relative; }
-    .main-nav-menu .dropdown::after { content: ' ▾'; font-size: 0.7em; opacity: 0.8; }
-    .main-nav-icons {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1.1rem;
-    }
-    .main-nav-icons a { opacity: 0.9; }
-    .main-nav-icons a:hover { opacity: 1; }
-
-    .breadcrumb {
-      width: 100%;
-      max-width: 960px;
-      margin: 0.5rem auto 0;
-      padding: 0 1rem;
-      font-size: 0.8rem;
-      color: #888;
-    }
-    .breadcrumb a { color: #888; text-decoration: none; }
-    .breadcrumb a:hover { color: #1a4d6d; }
-
     .form-wrapper { width: 100%; max-width: 960px; flex-shrink: 0; padding: 0; margin: 0 auto; }
     .page { display: none; }
     .page.active { display: block; }
@@ -352,7 +285,6 @@
 
     @media (min-width: 768px) {
       body { padding: 0 2rem 2rem; }
-      .main-nav { padding: 0.75rem 2rem; }
       .hela-header { padding: 1.5rem 2rem; }
     }
     @media (min-width: 1024px) {
@@ -365,7 +297,6 @@
     }
     @media (max-width: 767px) {
       body { padding: 0 0.75rem 1.25rem; }
-      .main-nav-menu { display: none; }
       .hela-header { padding: 1rem 1rem; margin-bottom: 1rem; }
       .hela-header .brand { font-size: 1.35rem; }
       .hela-header .year { font-size: 1.5rem; }
@@ -386,32 +317,6 @@
   </style>
 </head>
 <body>
-  <nav class="main-nav" aria-label="Navegación principal">
-    <a href="#" class="main-nav-logo">
-      <span class="gear-icon" aria-hidden="true">&#9881;</span>
-      <span class="logo-text-wrap">
-        <span class="main-nav-logo-text">HeLa</span>
-        <span class="main-nav-logo-sub">Congreso de Ingeniería Biomédica</span>
-      </span>
-    </a>
-    <ul class="main-nav-menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#" class="dropdown">Programa 2026</a></li>
-      <li><a href="#">Equipo</a></li>
-      <li><a href="#">Merch</a></li>
-      <li><a href="#">Ayuda</a></li>
-    </ul>
-    <div class="main-nav-icons">
-      <a href="#" aria-label="Buscar">&#128269;</a>
-      <a href="#" aria-label="Perfil">&#128100;</a>
-      <a href="#" aria-label="Carrito">&#128722;</a>
-    </div>
-  </nav>
-
-  <p class="breadcrumb">
-    <a href="#">INICIO</a> / <span>SIN TÍTULO</span>
-  </p>
-
   <div class="form-wrapper">
     <header class="hela-header" aria-hidden="true">
       <div class="logo">
@@ -887,3 +792,4 @@
   </script>
 </body>
 </html>
+
