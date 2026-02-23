@@ -99,6 +99,31 @@
       border-radius: 12px;
       box-shadow: 0 2px 12px rgba(0,0,0,.08);
     }
+    .card-blanca .form-card.form-card-inside {
+      box-shadow: none;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+    /* Frase destacada: revisa tus datos */
+    .aviso-datos-personales {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .aviso-datos-personales p { margin: 0 0 0.75rem; }
+    .aviso-datos-personales p:last-child { margin-bottom: 0; }
+    .destacado-revisa {
+      display: inline-block;
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      color: #e65100;
+      font-weight: 700;
+      padding: 0.5rem 0.85rem;
+      margin-top: 0.5rem;
+      border: 2px solid #ff9800;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(255,152,0,0.25);
+    }
     .back-link {
       display: inline-block;
       margin-bottom: 0.75rem;
@@ -328,7 +353,8 @@
   </style>
 </head>
 <body>
- 
+  <p class="breadcrumb">Inicio / Registro de Carnet</p>
+
   <div class="form-wrapper">
     <!-- page-intro: franja azul pegada al cuadro blanco -->
     <section id="page-intro" class="page active">
@@ -337,6 +363,7 @@
           <div class="logo">
             <span class="star">★</span>
             <span class="brand">Congreso HeLa</span>
+            <span class="sep">|</span>
           </div>
           <span class="year">2026</span>
         </header>
@@ -353,22 +380,32 @@
     </section>
 
     <section id="page-form" class="page">
-      <div class="form-card">
-        <a href="#" class="back-link" id="link-atras">&larr; Atrás</a>
-
-        <form id="form-registro" novalidate>
-          <h2 class="section-title">Sección 1 - Información del carnet</h2>
-          <p style="font-size: 0.95rem; color: #333; margin-bottom: 0.75rem;">
-            Este formulario corresponde al carnet <strong>Regular</strong> del Congreso HeLa 2026.
-          </p>
-          <div class="precio-box">
-            Precio del carnet Regular: <span id="precio-valor">$800</span>
+      <div class="card-blanca">
+        <header class="hela-header" aria-hidden="true">
+          <div class="logo">
+            <span class="star">★</span>
+            <span class="brand">Congreso HeLa</span>
+            <span class="sep">|</span>
           </div>
+          <span class="year">2026</span>
+        </header>
+        <div class="form-card form-card-inside">
+          <a href="#" class="back-link" id="link-atras">&larr; Atrás</a>
 
-          <h2 class="section-title">Sección 2 - Datos personales</h2>
-          <p style="font-size: 0.9rem; color: #555; margin-bottom: 0.75rem;">
-            Esta información será utilizada para tu acreditación, para asignarte el taller y visita industrial que elijas, realizar las asistencias del evento y entregarte una camiseta como parte de tu kit. Revisa antes de enviar que tus datos estén bien escritos (nombre, correo y teléfono).
-          </p>
+          <form id="form-registro" novalidate>
+            <h2 class="section-title">Sección 1 - Información del carnet</h2>
+            <p style="font-size: 0.95rem; color: #333; margin-bottom: 0.75rem;">
+              Este formulario corresponde al carnet <strong>Regular</strong> del Congreso HeLa 2026.
+            </p>
+            <div class="precio-box">
+              Precio del carnet Regular: <span id="precio-valor">$800</span>
+            </div>
+
+            <h2 class="section-title">Sección 2 - Datos personales</h2>
+            <div class="aviso-datos-personales">
+              <p>Esta información será utilizada para tu acreditación, para asignarte el taller y visita industrial que elijas, realizar las asistencias del evento y entregarte una camiseta como parte de tu kit.</p>
+              <p><span class="destacado-revisa">Revisa antes de enviar que tus datos estén bien escritos (nombre, correo y teléfono).</span></p>
+            </div>
 
           <div class="field" id="wrap-nombre">
             <label for="nombre">Nombre Completo <span class="req">*</span></label>
@@ -485,6 +522,7 @@
             <button type="submit" class="btn" id="btn-enviar">Finalizar registro &rarr;</button>
           </div>
         </form>
+        </div>
       </div>
     </section>
 
@@ -507,7 +545,7 @@
 
   <script>
     (function () {
-      var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWGiXFXhnaqg8CA_qxqczA_PPZBbKHnttR4_NKm462FAnD0tZLMr4MI-kI0ByTIhOZ-A/exec';
+      var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCY0GxJ0k13yRh6Xbt8s-qzrhSK8hJXIGmYmYIRqRlZXPRbXjqnIJcAdlIFg3qWuWNeA/exec';
 
       var MAX_FILE_MB = 10;
       var MAX_FILE_MB_ENVIO = 5;
@@ -818,6 +856,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
