@@ -344,10 +344,9 @@
         </header>
         <div class="intro">
           <p>Bienvenido al proceso de registro para el <strong>10º Congreso de Ingeniería Biomédica HeLa 2026</strong>, que se llevará a cabo del <strong>22 al 24 de abril</strong> en el Teatro del Pueblo, Hermosillo, Sonora.</p>
-          <p>Al adquirir tu carnet tendrás acceso a todas las conferencias durante la semana del congreso, además de un taller y visita industrial de tu preferencia, así como a los eventos durante esos días.</p>
+          <p>Al adquirir tu carnet tendrás acceso a todas las conferencias durante la semana del congreso, además de un taller y visita industrial de tu preferencia.</p>
           <div class="note">
-            <p><span class="star">★</span> La venta de carnets se realiza en tres fases, con precios diferenciados según la fecha de compra.</p>
-            <p><span class="star">★</span> Este formulario es exclusivo para carnet Regular. Para otros tipos (visitante, especial, etc.) contacta al comité en: congresohela@gmail.com</p>
+            <p><span class="star">★</span> En este formulario se vende únicamente el carnet <strong>Regular</strong>. Otros tipos de carnet (especial, visitante, etc.) se registran directamente por el comité.</p>
           </div>
         </div>
       </div>
@@ -693,133 +692,8 @@
         var tipoPago = tipoPagoInput.value.trim();
         var valid = true;
         if (!tipoPago) {
-          setError('wrap-tipo-pago', 'err-tipo-pago', 'Selecciona el tipo de pago.');
-          valid = false;
-        }
-        requiredFields.forEach(function (f) {
-          var el = document.getElementById(f.id);
-          if (!el.value.trim()) {
-            document.getElementById(f.wrap).classList.add('error');
-            document.getElementById(f.err).textContent = 'Este campo es obligatorio.';
-            valid = false;
-          }
-        });
-        if (tipoPago === 'fisico') {
-          var pass = document.getElementById('password-vendedor').value;
-          if (!pass) {
-            setError('wrap-password', 'err-password', 'Ingresa la contraseña del vendedor.');
-            valid = false;
-          } else if (pass !== PASSWORD_CORRECTA) {
-            setError('wrap-password', 'err-password', 'La contraseña es incorrecta.');
-            valid = false;
-          }
-        } else if (tipoPago === 'transferencia') {
-          if (!comprobanteInput.files || !comprobanteInput.files.length) {
-            setError('wrap-comprobante', 'err-comprobante', 'Debes subir el comprobante.');
-            valid = false;
-          }
-        }
-        return valid;
-      }
+          setError('wrap-tipo-pago', 'err-tipo-pago', '
 
-      function buildPayload(callback) {
-        var payload = {
-          fecha: new Date().toISOString(),
-          nombre: document.getElementById('nombre').value.trim(),
-          email: document.getElementById('email').value.trim(),
-          telefono: document.getElementById('telefono').value.trim(),
-          escuela: document.getElementById('escuela').value.trim(),
-          talla: document.getElementById('talla').value,
-          tipo_pago: tipoPagoInput.value,
-          password_vendedor: document.getElementById('password-vendedor').value || '',
-          nombre_vendedor: (document.getElementById('nombre-vendedor') ? document.getElementById('nombre-vendedor').value : '').trim(),
-          comprobante_nombre: '',
-          comprobante_base64: '',
-          comprobante_tipo: ''
-        };
-        var file = comprobanteInput.files && comprobanteInput.files[0];
-        if (file) {
-          payload.comprobante_nombre = file.name;
-          payload.comprobante_tipo = file.type || 'application/octet-stream';
-          if (file.size <= MAX_FILE_MB_ENVIO * 1024 * 1024) {
-            var reader = new FileReader();
-            reader.onload = function () {
-              var dataUrl = reader.result;
-              payload.comprobante_base64 = dataUrl.indexOf('base64,') >= 0 ? dataUrl.split('base64,')[1] : dataUrl;
-              callback(payload);
-            };
-            reader.readAsDataURL(file);
-          } else {
-            callback(payload);
-          }
-        } else {
-          callback(payload);
-        }
-      }
-
-      function enviarConFetch(payload, btnEnviar, textoOriginal) {
-        fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).then(function () {
-          btnEnviar.disabled = false;
-          btnEnviar.textContent = textoOriginal;
-          showPage(pageThanks);
-        }).catch(function (err) {
-          btnEnviar.disabled = false;
-          btnEnviar.textContent = textoOriginal;
-          alert('No se pudo enviar. Revisa tu conexión o intenta de nuevo.');
-          console.error(err);
-        });
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!validate()) {
-          var firstError = document.querySelector('.field.error');
-          if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          return;
-        }
-        var btnEnviar = document.getElementById('btn-enviar');
-        var textoOriginal = btnEnviar.textContent;
-        btnEnviar.disabled = true;
-        btnEnviar.textContent = 'Enviando…';
-
-        buildPayload(function (payload) {
-          var useGoogleScript = typeof google !== 'undefined' && google.script && google.script.run;
-
-          if (useGoogleScript) {
-            google.script.run
-              .withSuccessHandler(function (res) {
-                btnEnviar.disabled = false;
-                btnEnviar.textContent = textoOriginal;
-                if (res && res.success) {
-                  showPage(pageThanks);
-                } else {
-                  alert(res && res.message ? res.message : 'Error al registrar.');
-                }
-              })
-              .withFailureHandler(function (err) {
-                btnEnviar.disabled = false;
-                btnEnviar.textContent = textoOriginal;
-                alert('Error: ' + (err && err.message ? err.message : String(err)));
-              })
-              .procesarCompraDesdeFormulario(payload);
-          } else if (GOOGLE_SCRIPT_URL) {
-            enviarConFetch(payload, btnEnviar, textoOriginal);
-          } else {
-            btnEnviar.disabled = false;
-            btnEnviar.textContent = textoOriginal;
-            alert('Configura la URL de la Web App (GOOGLE_SCRIPT_URL) en el código.');
-          }
-        });
-      });
-    })();
-  </script>
-</body>
-</html>
 
 
 
