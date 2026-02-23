@@ -431,6 +431,11 @@
               <input type="password" id="password-vendedor" name="password_vendedor" placeholder="Contraseña" autocomplete="off">
               <span class="error-msg" id="err-password"></span>
             </div>
+            <div class="field" id="wrap-nombre-vendedor">
+              <label for="nombre-vendedor">Nombre del vendedor</label>
+              <input type="text" id="nombre-vendedor" name="nombre_vendedor" placeholder="Ej. María García López" autocomplete="off">
+              <span class="error-msg" id="err-nombre-vendedor"></span>
+            </div>
             <div class="field" id="wrap-validacion">
               <label>Validación contraseña</label>
               <div id="validacion-mensaje" class="validacion-mensaje" aria-live="polite"></div>
@@ -438,6 +443,15 @@
           </div>
 
           <div id="content-transferencia" class="payment-content">
+            <div class="field" id="wrap-datos-bancarios">
+              <label>Datos bancarios para la transferencia</label>
+              <div class="precio-box" style="background: #e3f2fd; color: #0d47a1; margin-top: 0.25rem;">
+                <div style="font-weight: 700; margin-bottom: 0.25rem;">4741 7436 0002 6703</div>
+                <div>Adriana Nieblas</div>
+                <div>Banregio</div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem;">Concepto: tu nombre completo</div>
+              </div>
+            </div>
             <div class="field" id="wrap-comprobante">
               <label>Comprobante de transferencia <span class="req">*</span></label>
               <div class="upload-zone" id="upload-zone" role="button" tabindex="0">
@@ -495,7 +509,7 @@
 
   <script>
     (function () {
-      var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxlyWo_pf86z0LpG5D8gDbMfKfWkxKPeqhVVVzjMOJ_qb7hvNKmxHmvvJO1q6BR-jVKhQ/exec';
+      var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWGiXFXhnaqg8CA_qxqczA_PPZBbKHnttR4_NKm462FAnD0tZLMr4MI-kI0ByTIhOZ-A/exec';
 
       var MAX_FILE_MB = 10;
       var MAX_FILE_MB_ENVIO = 5;
@@ -528,7 +542,7 @@
         this.value = this.value.replace(/\D/g, '');
       });
 
-      var PASSWORD_CORRECTA = 'CONGRESO2026';
+      var PASSWORD_CORRECTA = 'B10m3dic4#2026';
       function updateValidacionMensaje() {
         var el = document.getElementById('validacion-mensaje');
         if (!el) return;
@@ -718,6 +732,7 @@
           talla: document.getElementById('talla').value,
           tipo_pago: tipoPagoInput.value,
           password_vendedor: document.getElementById('password-vendedor').value || '',
+          nombre_vendedor: (document.getElementById('nombre-vendedor') ? document.getElementById('nombre-vendedor').value : '').trim(),
           comprobante_nombre: '',
           comprobante_base64: '',
           comprobante_tipo: ''
@@ -805,20 +820,6 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
