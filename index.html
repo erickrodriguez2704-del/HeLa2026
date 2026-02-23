@@ -308,8 +308,8 @@
   <div class="form-wrapper">
     <header class="hela-header" aria-hidden="true">
       <div class="logo">
-        <span class="gear" aria-hidden="true">&#9881;</span>
-        <span class="brand">HeLa</span>
+        <span class="star">"gear" aria-hidden="true">&#9881;</span>
+        <span class="brand">Congreso HeLa</span>
       </div>
       <span class="year">2026</span>
     </header>
@@ -318,8 +318,12 @@
       <div class="intro">
         <h1>Carnets - Congreso HeLa 2026</h1>
         <p>Bienvenido al proceso de registro para el <strong>10º Congreso de Ingeniería Biomédica HeLa 2026</strong>, que se llevará a cabo del <strong>22 al 24 de abril</strong> en el Teatro del Pueblo, Hermosillo, Sonora.</p>
-        <p>Al adquirir tu carnet, tendrás acceso a todas las conferencias durante la semana del congreso, además de un taller y visita industrial de tu preferencia.</p>
-        <p class="note">En este formulario se vende únicamente el carnet <strong>Regular</strong>. Otros tipos de carnet (especial, visitante, etc.) se registran directamente por el comité.</p>
+        <p>Al adquirir tu carnet tendrás acceso a todas las conferencias durante la semana del congreso, además de un taller y visita industrial de tu preferencia, así como a los eventos durante esos días.</p>
+        <div class="note">
+ 	 <p><span class="star">★</span> La venta de carnets se realiza en tres fases, con precios diferenciados según la fecha de compra.</p>
+         <p><span class="star">★</span> Este formulario es exclusivo para carnet Regular. Para otros tipos (visitante, especial, etc.) contacta al comité en: congresohela@gmail.com</p>
+          </div>
+        </div>
       </div>
       <button type="button" class="btn" id="btn-continuar">Continuar registro &rarr;</button>
     </section>
@@ -334,13 +338,16 @@
             Este formulario corresponde al carnet <strong>Regular</strong> del Congreso HeLa 2026.
           </p>
           <div class="precio-box">
-            Precio del carnet Regular: <span id="precio-valor">$500</span>
+            Precio del carnet Regular: <span id="precio-valor">$800</span>
           </div>
 
           <h2 class="section-title">Sección 2 - Datos personales</h2>
           <p style="font-size: 0.9rem; color: #555; margin-bottom: 1rem;">
-            Esta información será utilizada para tu acreditación, para asignarte el taller y visita industrial que elijas, realizar las asistencias del evento y entregarte una camiseta como parte de tu kit. Revisa antes de enviar que tus datos estén bien escritos (nombre, correo y teléfono).
+            Esta información será utilizada para tu acreditación, para asignarte el taller y visita industrial que elijas, realizar las asistencias del evento y entregarte una camiseta como parte de tu kit. 
           </p>
+	<div class="aviso" style="margin-top: 0; margin-bottom: 1rem;">
+  <strong> Importante:</strong> Revisa antes de enviar que tus datos estén bien escritos (nombre, correo y teléfono).
+</div>
 
           <div class="field" id="wrap-nombre">
             <label for="nombre">Nombre Completo <span class="req">*</span></label>
@@ -408,6 +415,36 @@
           </div>
 
           <div id="content-transferencia" class="payment-content">
+
+            <!-- DATOS BANCARIOS -->
+            <div style="background-color: #e3f2fd; border-left: 4px solid #1976d2; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                <strong style="color: #0d47a1; font-size: 1.1rem;">Datos para transferencia</strong>
+              </div>
+              
+              <div style="display: grid; gap: 0.5rem; font-size: 0.95rem;">
+                <div style="display: flex; align-items: baseline; flex-wrap: wrap;">
+                  <span style="min-width: 100px; color: #555;">Banco:</span>
+                  <strong style="color: #0d47a1;">Banregio</strong>
+                </div>
+                
+                <div style="display: flex; align-items: baseline; flex-wrap: wrap;">
+                  <span style="min-width: 100px; color: #555;">Cuenta:</span>
+                  <strong style="font-family: monospace; font-size: 1.1rem; background: #fff; padding: 0.2rem 0.5rem; border-radius: 4px;">4741 7436 0002 6703</strong>
+                </div>
+                
+                <div style="display: flex; align-items: baseline; flex-wrap: wrap;">
+                  <span style="min-width: 100px; color: #555;">Titular:</span>
+                  <strong>Adriana Nieblas</strong>
+                </div>
+                
+                <div style="margin-top: 0.5rem; padding: 0.5rem; background: #fff3e0; border-radius: 6px; border-left: 3px solid #ed6c02;">
+                  <span style="display: flex; gap: 0.5rem;">
+                    <span><strong>Concepto:</strong> Tu <strong>nombre completo</strong></span>
+                  </span>
+                </div>
+              </div>
+            </div>
             <div class="field" id="wrap-comprobante">
               <label>Comprobante de transferencia <span class="req">*</span></label>
               <div class="upload-zone" id="upload-zone" role="button" tabindex="0">
@@ -499,7 +536,7 @@
         this.value = this.value.replace(/\D/g, '');
       });
 
-      var PASSWORD_CORRECTA = 'CONGRESO2026';
+      var PASSWORD_CORRECTA = 'B10m3dic4#2026';
       function updateValidacionMensaje() {
         var el = document.getElementById('validacion-mensaje');
         if (!el) return;
@@ -777,6 +814,7 @@
   </script>
 </body>
 </html>
+
 
 
 
